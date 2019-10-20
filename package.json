@@ -3,12 +3,15 @@
   "version": "1.0.0",
   "description": "A person protofolio that was built based on the tutorial of Traversy Media - https://www.youtube.com/user/TechGuyWeb",
   "main": "index.js",
+  "homepage": "https://bascoe10.github.io/portfolio",
   "scripts": {
-    "sass": "node-sass -w scss/ -o dist/css/ --recursive"
+    "sass": "node-sass -w scss/ -o dist/css/ --recursive",
+    "deploy": "gh-pages -d dist"
   },
   "author": "Abass Sesay",
   "license": "MIT",
   "dependencies": {
+    "gh-pages": "2.1.1",
     "node-sass": "4.12.0"
   }
 }
