@@ -1,7 +1,7 @@
 {
-  "name": "mysite",
+  "name": "Portfolio",
   "version": "1.0.0",
-  "description": "Portfolio Website",
+  "description": "A person protofolio that was built based on the tutorial of Traversy Media - https://www.youtube.com/user/TechGuyWeb",
   "main": "index.js",
   "scripts": {
     "sass": "node-sass -w scss/ -o dist/css/ --recursive"
