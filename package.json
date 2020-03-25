@@ -11,6 +11,8 @@
   "author": "Abass Sesay",
   "license": "MIT",
   "dependencies": {
+    "gatsby-source-filesystem": "2.2.2",
+    "gatsby-transformer-remark": "2.7.1",
     "gh-pages": "2.1.1",
     "node-sass": "4.12.0"
   }
