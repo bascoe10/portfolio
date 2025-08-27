@@ -1,3 +1,6 @@
+@use "config" as *;
+@use "sass:color";
+
 .about-info {
   display: grid;
   overflow: hidden;
@@ -32,7 +35,7 @@
   }
 
   .job {
-    background: lighten($color: $primary-color, $amount: 5);
+    background: color.adjust($primary-color, $lightness: 5%);
     padding: 0.5rem;
     border-bottom: $secondary-color 5px solid;
   }

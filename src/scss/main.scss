@@ -1,9 +1,23 @@
-@import "config";
-@import "menu";
-@import "about";
+@use "sass:color";
+@use "config" as *;
+@use "menu";
+@use "about";
+@use "mobile";
 
+// CSS Reset and Base Styles
 * {
   box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -14,6 +28,21 @@ body {
   margin: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Screen reader only class for accessibility
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
 }
 
 // headings
@@ -30,7 +59,7 @@ h3 {
   &.sm-heading {
     margin-bottom: 2rem;
     padding: 0.2rem 1rem;
-    background: rgba(lighten($color: $primary-color, $amount: 2), 0.5);
+    background: rgba(color.adjust($primary-color, $lightness: 2%), 0.5);
   }
 }
 
@@ -38,6 +67,11 @@ h3 {
 a {
   color: #fff;
   text-decoration: none;
+  
+  &:focus {
+    outline: 2px solid $secondary-color;
+    outline-offset: 2px;
+  }
 }
 
 //header
@@ -60,10 +94,17 @@ main {
     margin-top: 1rem;
     a {
       padding: 0.4rem;
+      border-radius: 4px;
+      transition: all 0.3s ease;
 
       &:hover {
         color: $secondary-color;
         @include ease-out();
+      }
+      
+      &:focus {
+        outline: 2px solid $secondary-color;
+        outline-offset: 2px;
       }
     }
   }
@@ -84,11 +125,18 @@ main {
   img {
     width: 100%;
     border: 3px #fff solid;
+    border-radius: 4px;
+    transition: all 0.3s ease;
 
     &:hover {
       opacity: 0.5;
       border-color: $secondary-color;
       @include ease-out;
+    }
+    
+    &:focus {
+      outline: 2px solid $secondary-color;
+      outline-offset: 2px;
     }
   }
 }
@@ -105,6 +153,7 @@ main {
     border: 3px #fff solid;
     padding: 1.5rem 2.5rem;
     margin-bottom: 3rem;
+    border-radius: 4px;
     @include ease-out;
 
     &:hover {
@@ -116,6 +165,11 @@ main {
         color: set-text-color($secondary-color);
       }
     }
+    
+    &:focus {
+      outline: 2px solid $secondary-color;
+      outline-offset: 2px;
+    }
   }
 }
 
@@ -124,31 +178,40 @@ main {
   padding: 0.5rem;
   border: 0;
   margin-bottom: 0.3rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
 
   &:hover {
     background: $secondary-color;
     color: set-text-color($primary-color);
   }
+  
+  &:focus {
+    outline: 2px solid $secondary-color;
+    outline-offset: 2px;
+  }
 }
 
 .btn-dark {
   @extend .btn;
-  background: darken($primary-color, 50);
+  background: color.adjust($primary-color, $lightness: -50%);
   color: #fff;
 }
 
 .btn-light {
   @extend .btn;
-  background: lighten($primary-color, 50);
+  background: color.adjust($primary-color, $lightness: 50%);
   color: #fff;
 }
 
 #main-footer {
   text-align: center;
   padding: 1rem;
-  background: darken($color: $primary-color, $amount: 10);
+  background: color.adjust($primary-color, $lightness: -10%);
   color: set-text-color($primary-color);
   height: 60px;
+  
+  p {
+    margin: 0;
+  }
 }
-
-@import "mobile";

@@ -1,17 +1,64 @@
 {
-  "name": "Portfolio",
+  "name": "portfolio",
   "version": "1.0.0",
-  "description": "A person protofolio that was built based on the tutorial of Traversy Media - https://www.youtube.com/user/TechGuyWeb",
-  "main": "index.js",
+  "description": "A responsive personal portfolio website built with HTML, SCSS, and vanilla JavaScript. Demonstrates modern frontend development practices including responsive design, CSS Grid, Flexbox, and smooth animations.",
+  "main": "src/js/main.js",
   "homepage": "https://bascoe10.github.io/portfolio",
   "scripts": {
-    "sass": "node-sass -w scss/ -o dist/css/ --recursive",
-    "deploy": "gh-pages -d dist"
+    "dev": "npm run sass",
+    "sass": "sass --watch src/scss:dist/css --style=compressed",
+    "sass:build": "sass src/scss:dist/css --style=compressed",
+    "build": "npm run sass:build && npm run copy-assets",
+    "copy-assets": "copyfiles -u 1 \"src/**/*.{html,js,img}\" dist/",
+    "deploy": "npm run build && gh-pages -d dist",
+    "lint:css": "stylelint \"src/**/*.scss\"",
+    "lint:js": "eslint \"src/**/*.js\"",
+    "lint": "npm run lint:css && npm run lint:js",
+    "format": "prettier --write \"src/**/*.{html,js,scss}\"",
+    "test": "echo \"No tests specified yet\" && exit 0"
   },
-  "author": "Abass Sesay",
+  "keywords": [
+    "portfolio",
+    "responsive",
+    "scss",
+    "vanilla-javascript",
+    "css-grid",
+    "flexbox",
+    "accessibility",
+    "frontend"
+  ],
+  "author": {
+    "name": "Abass Sesay",
+    "email": "contact@abass.dev",
+    "url": "https://abass.dev"
+  },
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bascoe10/portfolio.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bascoe10/portfolio/issues"
+  },
+  "homepage": "https://bascoe10.github.io/portfolio",
   "dependencies": {
-    "gh-pages": "2.1.1",
-    "node-sass": ">=6.0.1"
-  }
+    "gh-pages": "2.1.1"
+  },
+  "devDependencies": {
+    "sass": "^1.69.0",
+    "copyfiles": "^2.4.1",
+    "eslint": "^8.0.0",
+    "prettier": "^2.8.0",
+    "stylelint": "^14.0.0",
+    "stylelint-config-standard-scss": "^6.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
 }

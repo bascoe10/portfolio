@@ -1,3 +1,6 @@
+@use "config" as *;
+@use "sass:color";
+
 .menu-btn {
   position: absolute;
   z-index: 3;
@@ -5,6 +8,14 @@
   top: 35px;
   cursor: pointer;
   @include ease-out;
+  border-radius: 4px;
+  padding: 8px;
+  transition: all 0.3s ease;
+
+  &:focus {
+    outline: 2px solid $secondary-color;
+    outline-offset: 2px;
+  }
 
   .btn-line {
     width: 28px;
@@ -12,6 +23,7 @@
     margin: 0 0 5px 0;
     background: set-text-color($primary-color);
     @include ease-out;
+    border-radius: 2px;
   }
 
   &.close {
@@ -39,6 +51,7 @@
   width: 100%;
   opacity: 0.99;
   visibility: hidden;
+  transition: visibility 0s, opacity 0.5s ease-out;
 
   &.show {
     visibility: visible;
@@ -59,7 +72,7 @@
   &-nav {
     margin: 0;
     padding: 0;
-    background-color: darken($primary-color, 5);
+    background-color: color.adjust($primary-color, $lightness: -5%);
     list-style: none;
     transform: translate3d(0, -100%, 0);
     @include ease-out;
@@ -85,6 +98,12 @@
       border: solid 3px $secondary-color;
       background: $portrait-image;
       z-index: 4;
+      transition: all 0.3s ease;
+      
+      &:focus {
+        outline: 2px solid $secondary-color;
+        outline-offset: 4px;
+      }
     }
   }
 
@@ -111,9 +130,22 @@
     color: set-text-color($primary-color);
     text-decoration: none;
     @include ease-out;
+    border-radius: 4px;
+    transition: all 0.3s ease;
 
     &:hover {
       color: $secondary-color;
+      transform: translateX(5px);
+    }
+    
+    &:focus {
+      outline: 2px solid $secondary-color;
+      outline-offset: 4px;
+      color: $secondary-color;
+    }
+    
+    &:active {
+      transform: scale(0.98);
     }
   }
 }
@@ -122,5 +154,25 @@
 @for $x from 1 through 4 {
   .nav-item:nth-child(#{$x}) {
     transition-delay: $x * 0.1s;
+  }
+}
+
+// Skip to main content link for accessibility
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: $secondary-color;
+  color: set-text-color($secondary-color);
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  z-index: 1000;
+  transition: top 0.3s ease;
+
+  &:focus {
+    top: 6px;
+    outline: 2px solid set-text-color($secondary-color);
+    outline-offset: 2px;
   }
 }

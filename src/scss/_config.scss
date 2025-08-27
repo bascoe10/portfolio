@@ -1,3 +1,6 @@
+@use "sass:color";
+@use "sass:math";
+
 $primary-color: #444;
 $secondary-color: #eece1a;
 $show-home-image: true;
@@ -32,7 +35,15 @@ $background-opacity: 0.9;
 }
 
 @function set-text-color($color) {
-  @if (lightness($color) > 40) {
+  // Use modern color.channel function with RGB space
+  $red: color.channel($color, "red", $space: rgb);
+  $green: color.channel($color, "green", $space: rgb);
+  $blue: color.channel($color, "blue", $space: rgb);
+  
+  // Calculate perceived brightness using standard formula
+  $brightness: math.div($red * 299 + $green * 587 + $blue * 114, 1000);
+  
+  @if ($brightness > 128) {
     @return #000;
   } @else {
     @return #fff;
@@ -52,13 +63,13 @@ $background-opacity: 0.9;
 }
 
 @mixin media-lg {
-  @media screen and (min-width: 769px) and (max-width: 1170) {
+  @media screen and (min-width: 769px) and (max-width: 1170px) {
     @content;
   }
 }
 
 @mixin media-xl {
-  @media screen and (min-width: 1171) {
+  @media screen and (min-width: 1171px) {
     @content;
   }
 }
