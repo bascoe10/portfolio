@@ -1,8 +1,10 @@
 @use "sass:color";
 @use "sass:math";
 
-$primary-color: #444;
-$secondary-color: #eece1a;
+$primary-color: #1a1a2e;
+$secondary-color: #e2b714;
+$surface-color: #16213e;
+$text-muted: #a0a0b0;
 $show-home-image: true;
 $home-image: url(../img/background.jpg);
 $portrait-image: url(../img/portrait.jpg);
@@ -39,14 +41,30 @@ $background-opacity: 0.9;
   $red: color.channel($color, "red", $space: rgb);
   $green: color.channel($color, "green", $space: rgb);
   $blue: color.channel($color, "blue", $space: rgb);
-  
+
   // Calculate perceived brightness using standard formula
   $brightness: math.div($red * 299 + $green * 587 + $blue * 114, 1000);
-  
+
   @if ($brightness > 128) {
     @return #000;
   } @else {
     @return #fff;
+  }
+}
+
+@mixin fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 

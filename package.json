@@ -9,7 +9,7 @@
     "sass": "sass --watch src/scss:dist/css --style=compressed",
     "sass:build": "sass src/scss:dist/css --style=compressed",
     "build": "npm run sass:build && npm run copy-assets",
-    "copy-assets": "copyfiles -u 1 \"src/**/*.{html,js,img}\" dist/",
+    "copy-assets": "copyfiles -u 1 \"src/**/*.{html,js,img,pdf}\" dist/",
     "deploy": "npm run build && gh-pages -d dist",
     "lint:css": "stylelint \"src/**/*.scss\"",
     "lint:js": "eslint \"src/**/*.js\"",
