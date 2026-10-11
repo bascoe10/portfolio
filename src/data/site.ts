@@ -2,11 +2,11 @@
 
 export const person = {
   name: 'Abass Sesay',
-  role: 'Staff Software Engineer',
+  role: 'Software Engineer',
   location: 'Philadelphia area',
   email: 'bassco10@gmail.com',
   intro:
-    'I build the systems that keep financial platforms safe and compliant — screening, investigations tooling, and the infrastructure underneath them. Currently a Staff Engineer at Block.',
+    'I’m a software engineer who likes the unglamorous systems that quietly keep things safe — the kind you only notice when they break. These days that means compliance infrastructure at Block.',
 };
 
 export const links = [
@@ -16,105 +16,26 @@ export const links = [
   { label: 'X / Twitter', href: 'https://twitter.com/bascoe10' },
 ];
 
-export type Role = {
-  company: string;
-  title: string;
-  start: string;
-  end: string;
-  points: string[];
-};
+// Short paragraphs, not résumé bullets. The PDF résumé has the details.
+export const now = [
+  'At Block I work on the screening and investigations side of compliance: the services that decide whether a person or business needs a closer look, and the tools investigators use once they do. A lot of the job is migrations — moving critical, regulated systems onto new foundations without anyone feeling the ground shift.',
+  'I also spend time helping teams get real value out of AI-assisted development, while keeping a firm grip on the fundamentals underneath.',
+];
 
-export const experience: Role[] = [
-  {
-    company: 'Block',
-    title: 'Staff Software Engineer',
-    start: '2022',
-    end: 'Present',
-    points: [
-      'Tech lead for the migration of Block’s compliance screening platform, integrating external screening networks into a shared entity-screening service.',
-      'Built tooling that supports financial-crime investigations, including regulatory filings such as Suspicious Activity Reports.',
-      'Led a cross-team migration of multiple business units onto a new case-management platform.',
-      'Ran the working group that drove adoption of generative-AI developer tools across the organization.',
-    ],
-  },
+export const before = [
   {
     company: 'Microsoft',
-    title: 'Software Engineer II',
-    start: '2019',
-    end: '2022',
-    points: [
-      'Built tools to monitor and track Windows servicing and delivery.',
-      'Designed build-ETA forecasting from historical build data, and components that auto-approved stages of the build pipeline.',
-      'Brought the team in line with security KPIs through upgrade, patching and secure-development policies.',
-    ],
+    years: '2019 — 2022',
+    text: 'Tooling for Windows servicing and delivery, including forecasting when builds would land.',
   },
   {
     company: 'Comcast',
-    title: 'Software Engineer II · co-op to full time',
-    start: '2016',
-    end: '2019',
-    points: [
-      'Maintained a Rails application that put an approachable UI over the Nagios monitoring platform.',
-      'Migrated infrastructure from OpenStack to AWS and brought CircleCI into deployment, cutting deploy time by more than half.',
-      'Led development of monitoring tools for internal applications and mentored junior engineers.',
-    ],
-  },
-];
-
-export type Project = {
-  name: string;
-  summary: string;
-  stack?: string;
-  year?: string;
-  image?: string;
-  links: { label: string; href: string }[];
-};
-
-// Newer projects go at the top of this list.
-export const projects: Project[] = [
-  {
-    name: 'Session Saver',
-    summary: 'Chrome extension that saves every tab in a window so the whole session can be restored later.',
-    stack: 'Chrome extension · JavaScript',
-    image: '/img/session-saver.png',
-    links: [
-      {
-        label: 'Chrome Web Store',
-        href: 'https://chrome.google.com/webstore/detail/session-saver/lkiecnoahphgdbddphhhhhcihekccggo',
-      },
-      { label: 'Source', href: 'https://github.com/bascoe10/SessionSaver' },
-    ],
+    years: '2016 — 2019',
+    text: 'Started as a co-op; ended up running monitoring tools and moving infrastructure to AWS.',
   },
   {
-    name: 'FootPrint',
-    summary: 'Command-line tool that measures how many lines of a git repository each author has contributed.',
-    stack: 'Python',
-    image: '/img/footprint.png',
-    links: [{ label: 'Source', href: 'https://github.com/bascoe10/footprint' }],
+    company: 'Drexel University',
+    years: 'BSc ’17 · MS ’19',
+    text: 'Computer science, then a master’s in cybersecurity.',
   },
-  {
-    name: 'Beljom',
-    // TODO(Abass): confirm this one-line description.
-    summary: 'Web platform.',
-    image: '/img/beljom.png',
-    links: [{ label: 'Visit', href: 'https://www.beljom.com/' }],
-  },
-];
-
-export const education = [
-  { school: 'Drexel University', degree: 'MS, Cybersecurity', year: '2019' },
-  { school: 'Drexel University', degree: 'BSc, Computer Science · minor in Business', year: '2017' },
-];
-
-export const skills = [
-  'Go',
-  'Python',
-  'TypeScript',
-  'Java',
-  'C#',
-  'Ruby',
-  'AWS',
-  'Azure',
-  'Distributed systems',
-  'Compliance & risk platforms',
 ];

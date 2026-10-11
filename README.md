@@ -12,7 +12,7 @@ npm run build    # static output in dist/
 
 ## Editing content
 
-All copy — intro, links, experience, projects, education, toolkit — lives in `src/data/site.ts`. Add new projects at the top of the `projects` list; images go in `public/img/`.
+All copy — intro, links, experience, now, before — lives in `src/data/site.ts`. Projects are not listed on the site; it links to GitHub instead.
 
 ## Deploy
 
