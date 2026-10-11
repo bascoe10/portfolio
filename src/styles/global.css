@@ -122,7 +122,6 @@ a:hover {
   height: 7.5rem;
   border-radius: 50%;
   object-fit: cover;
-  filter: grayscale(1) contrast(1.05);
 }
 
 .links {
