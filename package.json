@@ -1,35 +1,11 @@
 {
   "name": "portfolio",
-  "version": "1.0.0",
-  "description": "A responsive personal portfolio website built with HTML, SCSS, and vanilla JavaScript. Demonstrates modern frontend development practices including responsive design, CSS Grid, Flexbox, and smooth animations.",
-  "main": "src/js/main.js",
-  "homepage": "https://bascoe10.github.io/portfolio",
-  "scripts": {
-    "dev": "npm run sass",
-    "sass": "sass --watch src/scss:dist/css --style=compressed",
-    "sass:build": "sass src/scss:dist/css --style=compressed",
-    "build": "npm run sass:build && npm run copy-assets",
-    "copy-assets": "copyfiles -u 1 \"src/**/*.{html,js,img,pdf}\" dist/",
-    "deploy": "npm run build && gh-pages -d dist",
-    "lint:css": "stylelint \"src/**/*.scss\"",
-    "lint:js": "eslint \"src/**/*.js\"",
-    "lint": "npm run lint:css && npm run lint:js",
-    "format": "prettier --write \"src/**/*.{html,js,scss}\"",
-    "test": "echo \"No tests specified yet\" && exit 0"
-  },
-  "keywords": [
-    "portfolio",
-    "responsive",
-    "scss",
-    "vanilla-javascript",
-    "css-grid",
-    "flexbox",
-    "accessibility",
-    "frontend"
-  ],
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Personal site of Abass Sesay, built with Astro and deployed to abass.dev via GitHub Pages.",
   "author": {
     "name": "Abass Sesay",
-    "email": "contact@abass.dev",
     "url": "https://abass.dev"
   },
   "license": "MIT",
@@ -37,27 +13,17 @@
     "type": "git",
     "url": "https://github.com/bascoe10/portfolio.git"
   },
-  "bugs": {
-    "url": "https://github.com/bascoe10/portfolio/issues"
-  },
-  "dependencies": {
-    "gh-pages": "^6.3.0"
-  },
-  "devDependencies": {
-    "copyfiles": "^2.4.1",
-    "eslint": "^8.0.0",
-    "prettier": "^2.8.0",
-    "sass": "^1.69.0",
-    "stylelint": "^14.0.0",
-    "stylelint-config-standard-scss": "^6.0.0"
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
   },
   "engines": {
-    "node": ">=14.0.0",
-    "npm": ">=6.0.0"
+    "node": ">=20"
   },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
-  ]
+  "dependencies": {
+    "@fontsource-variable/newsreader": "^5.3.0",
+    "@fontsource/ibm-plex-mono": "^5.3.0",
+    "astro": "^7.3.8"
+  }
 }

@@ -1,0 +1,101 @@
+---
+import Base from '../layouts/Base.astro';
+import { person, links, experience, projects, education, skills } from '../data/site';
+
+const year = new Date().getFullYear();
+const [first, ...rest] = person.name.split(' ');
+---
+
+<Base
+  title={`${person.name} — ${person.role}`}
+  description={person.intro}
+>
+  <div class="page">
+    <header class="hero">
+      <div>
+        <p class="role">{person.role} <span>·</span> {person.location}</p>
+        <h1>{first}<br />{rest.join(' ')}</h1>
+        <p class="intro">{person.intro}</p>
+        <ul class="links">
+          {links.map((l) => (
+            <li><a href={l.href} rel="me noopener">{l.label}</a></li>
+          ))}
+          <li><a href="/resume.pdf">Résumé (PDF)</a></li>
+        </ul>
+      </div>
+      <img class="portrait" src="/img/portrait.jpg" alt={`Portrait of ${person.name}`} width="240" height="240" />
+    </header>
+
+    <main id="main">
+      <section aria-labelledby="experience">
+        <h2 id="experience">Experience</h2>
+        <div class="entries">
+          {experience.map((r) => (
+            <article class="entry">
+              <header>
+                <h3>{r.company}</h3>
+                <span class="meta">{r.start} — {r.end}</span>
+              </header>
+              <p class="title">{r.title}</p>
+              <ul>
+                {r.points.map((p) => <li>{p}</li>)}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section aria-labelledby="projects">
+        <h2 id="projects">Projects</h2>
+        <div class="entries">
+          {projects.map((p) => (
+            <article class="entry project">
+              <div>
+                <header>
+                  <h3>{p.name}</h3>
+                  {p.year && <span class="meta">{p.year}</span>}
+                </header>
+                <p>{p.summary}</p>
+                {p.stack && <p class="meta">{p.stack}</p>}
+                <div class="inline-links">
+                  {p.links.map((l) => <a href={l.href}>{l.label} ↗</a>)}
+                </div>
+              </div>
+              {p.image && <img src={p.image} alt={`Screenshot of ${p.name}`} loading="lazy" />}
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section aria-labelledby="education">
+        <h2 id="education">Education</h2>
+        <ul class="rows">
+          {education.map((e) => (
+            <li>
+              <span><strong>{e.school}</strong> — {e.degree}</span>
+              <span class="meta">{e.year}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section aria-labelledby="toolkit">
+        <h2 id="toolkit">Toolkit</h2>
+        <p class="tags">{skills.join(' · ')}</p>
+      </section>
+
+      <section class="contact" aria-labelledby="contact">
+        <h2 id="contact">Contact</h2>
+        <div>
+          <p>The best way to reach me is email: <a href={`mailto:${person.email}`}>{person.email}</a>.</p>
+          <p>I also write at <a href="https://blog.abass.dev">blog.abass.dev</a>.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>© {year} {person.name}</span>
+      <a href="https://github.com/bascoe10/portfolio">Source</a>
+    </footer>
+  </div>
+</Base>
