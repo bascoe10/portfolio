@@ -13,7 +13,6 @@ export const links = [
   { label: 'GitHub', href: 'https://github.com/bascoe10' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/abass-sesay-73046b70/' },
   { label: 'Writing', href: 'https://blog.abass.dev' },
-  { label: 'X / Twitter', href: 'https://twitter.com/bascoe10' },
 ];
 
 // Short paragraphs, not résumé bullets. The PDF résumé has the details.
