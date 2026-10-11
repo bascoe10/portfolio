@@ -1,0 +1,70 @@
+---
+import Base from '../layouts/Base.astro';
+import { person, links, now, before } from '../data/site';
+
+const year = new Date().getFullYear();
+const [first, ...rest] = person.name.split(' ');
+---
+
+<Base
+  title={`${person.name} — ${person.role}`}
+  description={person.intro}
+>
+  <div class="page">
+    <header class="hero">
+      <div>
+        <p class="role">{person.role} <span>·</span> {person.location}</p>
+        <h1>{first}<br />{rest.join(' ')}</h1>
+        <p class="intro">{person.intro}</p>
+        <ul class="links">
+          {links.map((l) => (
+            <li><a href={l.href} rel="me noopener">{l.label}</a></li>
+          ))}
+          <li><a href="/resume.pdf">Résumé (PDF)</a></li>
+        </ul>
+      </div>
+      <img class="portrait" src="/img/portrait.jpg" alt={`Portrait of ${person.name}`} width="480" height="480" />
+    </header>
+
+    <main id="main">
+      <section aria-labelledby="now">
+        <h2 id="now">Now</h2>
+        <div class="prose">
+          {now.map((p) => <p>{p}</p>)}
+        </div>
+      </section>
+
+      <section aria-labelledby="before">
+        <h2 id="before">Before</h2>
+        <ul class="rows">
+          {before.map((b) => (
+            <li>
+              <span><strong>{b.company}</strong> — {b.text}</span>
+              <span class="meta">{b.years}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section aria-labelledby="code">
+        <h2 id="code">Code</h2>
+        <div class="prose">
+          <p>Side projects, experiments and old tools live on <a href="https://github.com/bascoe10">GitHub</a>.</p>
+        </div>
+      </section>
+
+      <section class="contact" aria-labelledby="contact">
+        <h2 id="contact">Contact</h2>
+        <div>
+          <p>Email is best: <a href={`mailto:${person.email}`}>{person.email}</a>.</p>
+          <p>I also write at <a href="https://blog.abass.dev">blog.abass.dev</a>.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>© {year} {person.name}</span>
+      <a href="https://github.com/bascoe10/portfolio">Source</a>
+    </footer>
+  </div>
+</Base>
